@@ -1,0 +1,46 @@
+.zodiac-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    width: 200px;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .zodiac-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .zodiac-block:hover {
+    transform: scale(1.05);
+  }
+  
+  .zodiac-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+  
+  .zodiac-info {
+    text-align: center;
+  }
+  
+  .zodiac-info h3 {
+    font-size: 1.2em;
+    margin: 0;
+  }
+  
+  .zodiac-info p {
+    margin: 5px 0 0;
+    color: #888;
+  }
+  
