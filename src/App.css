@@ -14,3 +14,10 @@
   color: white;
 }
 
+.app-header button{
+  margin-right: 20px;
+  padding: 6px 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
