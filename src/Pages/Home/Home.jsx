@@ -23,7 +23,6 @@ const Home = () => {
   const { t, i18n } = useTranslation();
   const [selectedSign, setSelectedSign] = useState(null);
   const [horoscopeDescription, setHoroscopeDescription] = useState("");
-  const [language, setLanguage] = useState("en");
 
   const getZodiacSigns = () => [
     { sign: "aries", dateRange: t("period.aries"), icon: zodiacIcons.aries },
@@ -33,43 +32,29 @@ const Home = () => {
     { sign: "leo", dateRange: t("period.leo"), icon: zodiacIcons.leo },
     { sign: "virgo", dateRange: t("period.virgo"), icon: zodiacIcons.virgo },
     { sign: "libra", dateRange: t("period.libra"), icon: zodiacIcons.libra },
-    {
-      sign: "scorpio",
-      dateRange: t("period.scorpio"),
-      icon: zodiacIcons.scorpio,
-    },
-    {
-      sign: "sagittarius",
-      dateRange: t("period.sagittarius"),
-      icon: zodiacIcons.sagittarius,
-    },
-    {
-      sign: "capricorn",
-      dateRange: t("period.capricorn"),
-      icon: zodiacIcons.capricorn,
-    },
-    {
-      sign: "aquarius",
-      dateRange: t("period.aquarius"),
-      icon: zodiacIcons.aquarius,
-    },
+    { sign: "scorpio", dateRange: t("period.scorpio"), icon: zodiacIcons.scorpio },
+    { sign: "sagittarius", dateRange: t("period.sagittarius"), icon: zodiacIcons.sagittarius },
+    { sign: "capricorn", dateRange: t("period.capricorn"), icon: zodiacIcons.capricorn },
+    { sign: "aquarius", dateRange: t("period.aquarius"), icon: zodiacIcons.aquarius },
     { sign: "pisces", dateRange: t("period.pisces"), icon: zodiacIcons.pisces },
   ];
 
-  useEffect(() => {}, [i18n.language]);
+  useEffect(() => {
+    // Optionally handle language change effects here
+  }, [i18n.language]);
 
   const handleZodiacClick = async (sign) => {
     try {
       const response = await axios.post(
         "https://poker247tech.ru/get_horoscope/",
         {
-          sign: sign || undefined,  
-          language: language === "en" ? "translated" : "original",
+          sign: sign || undefined,
+          language: i18n.language === "en" ? "translated" : "original",
           period: "today",
         }
       );
-      setHoroscopeDescription(response.data.description || ""); 
-      setSelectedSign(sign || null);  
+      setHoroscopeDescription(response.data.description || "");
+      setSelectedSign(sign || null);
     } catch (error) {
       console.error("Error fetching horoscope:", error);
     }
